@@ -6,7 +6,7 @@
 /*   By: mgagne <mgagne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 16:50:52 by mgagne            #+#    #+#             */
-/*   Updated: 2023/06/03 13:04:06 by mgagne           ###   ########.fr       */
+/*   Updated: 2023/06/03 21:35:11 by mgagne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-int	print_error(char *str)
+void	print_error(char *str)
 {
 	write(STDERR_FILENO, str, ft_strlen(str));
-	return (1);
+	return ;
 }
 
 static int	ft_overflow(int negative)
