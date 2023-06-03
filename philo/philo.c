@@ -6,16 +6,16 @@
 /*   By: mgagne <mgagne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 15:20:29 by mgagne            #+#    #+#             */
-/*   Updated: 2023/06/03 21:59:58 by mgagne           ###   ########.fr       */
+/*   Updated: 2023/06/03 22:06:51 by mgagne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	start_philo(t_philo *p)
-{
-	return (0);
-}
+// int	start_philo(t_philo *p)
+// {
+// 	return (0);
+// }
 
 int	main(int argc, char **argv)
 {
@@ -28,7 +28,7 @@ int	main(int argc, char **argv)
 	philo = init_philo(argc, argv);
 	if (!philo)
 		return (1);
-	if (start_philo(philo))
-		return (1);
+	// if (start_philo(philo))
+	// 	return (1);
 	return (0);
 }

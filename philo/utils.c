@@ -6,7 +6,7 @@
 /*   By: mgagne <mgagne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 16:50:52 by mgagne            #+#    #+#             */
-/*   Updated: 2023/06/03 21:35:11 by mgagne           ###   ########.fr       */
+/*   Updated: 2023/06/03 22:18:56 by mgagne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ void	print_error(char *str)
 	return ;
 }
 
-static int	ft_overflow(int negative)
-{
-	if (negative == -1)
-		return (0);
-	else
-		return (-1);
-}
+// static int	ft_overflow(int negative)
+// {
+// 	if (negative == -1)
+// 		return (0);
+// 	else
+// 		return (-1);
+// }
 
 int	ft_atoi(const char *str)
 {
@@ -56,7 +56,7 @@ int	ft_atoi(const char *str)
 	while (str[i] && (str[i] >= '0' && str[i] <= '9'))
 	{
 		if (result != (result * 10 + (str[i] - '0')) / 10)
-			return (ft_overflow(negative));
+			return (0);
 		result *= 10;
 		result += (int)str[i] - '0';
 		i++;

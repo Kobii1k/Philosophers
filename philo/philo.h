@@ -6,7 +6,7 @@
 /*   By: mgagne <mgagne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 15:19:31 by mgagne            #+#    #+#             */
-/*   Updated: 2023/06/03 21:52:17 by mgagne           ###   ########.fr       */
+/*   Updated: 2023/06/03 22:28:22 by mgagne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 [nb_of_times_philo_must_eat]\n"
 # define ERROR2 "parse error: empty parameter.\n"
 # define ERROR3 "parse error: parameters must be digits.\n"
-# define ERROR4 "parse error: number parameters must be > 0.\n"
+# define ERROR4 "parse error: parameters must be between 1 and INT_MAX.\n"
 # define ERROR5 "parse error: time variables must be >= 60ms.\n"
 # define ERROR99 "malloc error\n"
 
