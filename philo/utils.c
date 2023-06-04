@@ -6,7 +6,7 @@
 /*   By: mgagne <mgagne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 16:50:52 by mgagne            #+#    #+#             */
-/*   Updated: 2023/06/03 22:18:56 by mgagne           ###   ########.fr       */
+/*   Updated: 2023/06/04 21:40:05 by mgagne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,30 +36,31 @@ void	print_error(char *str)
 // 		return (-1);
 // }
 
-int	ft_atoi(const char *str)
+long long	ft_atoll(const char *str)
 {
-	unsigned int	i;
-	int				negative;
-	long int		result;
+	long long	result;
+	long long	tmp;
+	char		is_negative;
 
-	i = 0;
-	negative = 1;
+	while (*str == '\t' || *str == '\n' || *str == '\v' || *str == '\f'
+		|| *str == '\r' || *str == ' ')
+		str++;
+	is_negative = *str == '-';
+	if (*str == '+' || *str == '-')
+		str++;
 	result = 0;
-	while (str[i] && (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13)))
-		i++;
-	if (str[i] && (str[i] == '+' || str[i] == '-'))
+	while (*str >= '0' && *str <= '9')
 	{
-		if (str[i] == '-')
-			negative = -1;
-		i++;
+		tmp = result * 10 + *str++ - '0';
+		if (tmp < result)
+		{
+			if (is_negative)
+				return (LLONG_MIN);
+			return (LLONG_MAX);
+		}
+		result = tmp;
 	}
-	while (str[i] && (str[i] >= '0' && str[i] <= '9'))
-	{
-		if (result != (result * 10 + (str[i] - '0')) / 10)
-			return (0);
-		result *= 10;
-		result += (int)str[i] - '0';
-		i++;
-	}
-	return ((int) result * negative);
+	if (is_negative)
+		return (-result);
+	return (result);
 }

@@ -6,7 +6,7 @@
 /*   By: mgagne <mgagne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 15:19:31 by mgagne            #+#    #+#             */
-/*   Updated: 2023/06/03 22:28:22 by mgagne           ###   ########.fr       */
+/*   Updated: 2023/06/04 21:17:56 by mgagne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,23 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include <limits.h>
 
 # define ERROR1 "./philo [nb_of_philo] [time_die] [time_eat] [time_sleep] \
 [nb_of_times_philo_must_eat]\n"
 # define ERROR2 "parse error: empty parameter.\n"
-# define ERROR3 "parse error: parameters must be digits.\n"
+# define ERROR3 "parse error: parameters must be positive digits.\n"
 # define ERROR4 "parse error: parameters must be between 1 and INT_MAX.\n"
 # define ERROR5 "parse error: time variables must be >= 60ms.\n"
 # define ERROR99 "malloc error\n"
 
 typedef struct s_philo
 {
-	int	nb_philo;
-	int	t_die;
-	int	t_eat;
-	int	t_sleep;
-	int	nb_eat;
+	long long int	nb_philo;
+	long long int	t_die;
+	long long int	t_eat;
+	long long int	t_sleep;
+	long long int	nb_eat;
 	int ac;
 }				t_philo;
 
@@ -39,6 +40,7 @@ typedef struct s_philo
 size_t	ft_strlen(const char *s);
 void	print_error(char *str);
 int		ft_atoi(const char *str);
+long long	ft_atoll(const char *str);
 
 //init.c
 t_philo	*init_philo(int argc, char **argv);
