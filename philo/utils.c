@@ -6,11 +6,19 @@
 /*   By: mgagne <mgagne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 16:50:52 by mgagne            #+#    #+#             */
-/*   Updated: 2023/06/04 21:40:05 by mgagne           ###   ########.fr       */
+/*   Updated: 2023/09/07 18:14:47 by mgagne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+long	get_time(long create_time)
+{
+	struct timeval	time;
+
+	gettimeofday(&time, NULL);
+	return ((long)(time.tv_usec / 1000 + time.tv_sec * 1000) - create_time);
+}
 
 size_t	ft_strlen(const char *s)
 {
@@ -27,14 +35,6 @@ void	print_error(char *str)
 	write(STDERR_FILENO, str, ft_strlen(str));
 	return ;
 }
-
-// static int	ft_overflow(int negative)
-// {
-// 	if (negative == -1)
-// 		return (0);
-// 	else
-// 		return (-1);
-// }
 
 long long	ft_atoll(const char *str)
 {

@@ -1,6 +1,6 @@
 NAME			= philo
 
-SRCS			= philo.c utils.c init.c
+SRCS			= philo.c utils.c init.c process.c close.c
 
 OBJS			= ${SRCS:.c=.o}
 
@@ -8,15 +8,15 @@ OBJS_BONUS		= ${SRCS_BONUS:.c=.o}
 
 CC				= cc
 
-CFLAGS 			= -Wall -Werror -Wextra -g3
+CFLAGS 			= -Wall -Werror -Wextra
 
 all:			${NAME}
 
 %.o:			%.c Makefile philo.h
-				${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+				${CC} ${CFLAGS} -c $< -o ${<:.c=.o} -lpthread
 
 ${NAME}:		${OBJS}
-				${CC} ${CFLAGS} ${OBJS} -o ${NAME}
+				${CC} ${CFLAGS} ${OBJS} -o ${NAME} -lpthread
 
 clean:
 				rm -f ${OBJS}
