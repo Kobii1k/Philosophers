@@ -6,7 +6,7 @@
 /*   By: mgagne <mgagne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 15:19:31 by mgagne            #+#    #+#             */
-/*   Updated: 2023/09/07 18:15:49 by mgagne           ###   ########.fr       */
+/*   Updated: 2023/09/18 17:05:00 by mgagne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@
 # define ERROR5 "parse error: time variables must be >= 60ms.\n"
 # define ERROR99 "malloc error\n"
 
-# define EAT	"\x1b[32mis eating\x1b[0m"
+// # define EAT	"\x1b[32mis eating\x1b[0m"
+# define EAT	"is eating"
 # define THINK	"\x1b[34mis thinking\x1b[0m"
 # define SLEEP	"\x1b[35mis sleeping\x1b[0m"
 # define DEAD	"\x1b[31mdied\x1b[0m"
@@ -74,10 +75,6 @@ pthread_mutex_t	*init_forks(int	n);
 pthread_t	*init_philo(t_info *info);
 
 //process.c
-void		take_forks(t_philo *p);
-void		eat(t_philo *p);
-void		replace_forks(t_philo *p);
-void		sleep_think(t_philo *p);
 void		*philosophize(void *data);
 
 //close.c
