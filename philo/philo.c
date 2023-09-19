@@ -6,7 +6,7 @@
 /*   By: mgagne <mgagne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 15:20:29 by mgagne            #+#    #+#             */
-/*   Updated: 2023/09/07 18:14:09 by mgagne           ###   ########.fr       */
+/*   Updated: 2023/09/19 11:41:23 by mgagne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ t_philo	*new_philo(t_info *info, int id)
 		philo->left_fork = info->nb_philo;
 	else
 		philo->left_fork = id - 1;
-	// printf("id : %d\nleft : %d\nright : %d\n\n", id, philo->left_fork, philo->right_fork);
 	return (philo);
 }
 

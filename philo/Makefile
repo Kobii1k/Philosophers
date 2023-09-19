@@ -16,7 +16,7 @@ all:			${NAME}
 				${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
 ${NAME}:		${OBJS}
-				${CC} ${CFLAGS} ${OBJS} -o ${NAME} -lpthread -fsanitize=thread
+				${CC} ${CFLAGS} ${OBJS} -o ${NAME} -lpthread
 
 clean:
 				rm -f ${OBJS}
