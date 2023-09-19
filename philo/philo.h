@@ -6,7 +6,7 @@
 /*   By: mgagne <mgagne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 15:19:31 by mgagne            #+#    #+#             */
-/*   Updated: 2023/09/18 17:05:00 by mgagne           ###   ########.fr       */
+/*   Updated: 2023/09/18 17:36:03 by mgagne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ typedef struct s_info
 	long long int	create_time;
 	int				ac;
 	int				alive;
-
+	int				*int_tab;
 	pthread_mutex_t	print_m;
 	pthread_mutex_t	dead_m;
 	pthread_mutex_t	*fork_m;
@@ -67,6 +67,7 @@ size_t		ft_strlen(const char *s);
 void		print_error(char *str);
 long long	ft_atoll(const char *str);
 long		get_time(long create_time);
+void		ft_bzero(void *s, size_t n);
 
 //init.c
 t_info		*init_info(int argc, char **argv);

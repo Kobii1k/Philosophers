@@ -6,7 +6,7 @@
 /*   By: mgagne <mgagne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 12:54:20 by mgagne            #+#    #+#             */
-/*   Updated: 2023/09/07 18:13:19 by mgagne           ###   ########.fr       */
+/*   Updated: 2023/09/18 17:37:02 by mgagne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ t_info	*init_info(int argc, char **argv)
 		info->nb_eat = -1;
 	if (check_overflow(info, argc))
 		return(free(info), NULL);
+	info->int_tab = malloc(sizeof(int) * info->nb_philo);
+	ft_bzero(info->int_tab, info->nb_philo);
 	gettimeofday(&time, NULL);
 	info->create_time = (long)(time.tv_usec / 1000 + time.tv_sec * 1000);
 	pthread_mutex_init(&(info->print_m), NULL);

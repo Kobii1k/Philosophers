@@ -13,10 +13,10 @@ CFLAGS 			= -Wall -Werror -Wextra
 all:			${NAME}
 
 %.o:			%.c Makefile philo.h
-				${CC} ${CFLAGS} -c $< -o ${<:.c=.o} -lpthread
+				${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
 ${NAME}:		${OBJS}
-				${CC} ${CFLAGS} ${OBJS} -o ${NAME} -lpthread
+				${CC} ${CFLAGS} ${OBJS} -o ${NAME} -lpthread -fsanitize=thread
 
 clean:
 				rm -f ${OBJS}

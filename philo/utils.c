@@ -6,11 +6,24 @@
 /*   By: mgagne <mgagne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 16:50:52 by mgagne            #+#    #+#             */
-/*   Updated: 2023/09/07 18:14:47 by mgagne           ###   ########.fr       */
+/*   Updated: 2023/09/18 17:35:42 by mgagne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+void	ft_bzero(void *s, size_t n)
+{
+	unsigned char	*pointer;
+
+	pointer = s;
+	while (n)
+	{
+		*pointer = 0;
+		pointer++;
+		n--;
+	}
+}
 
 long	get_time(long create_time)
 {
