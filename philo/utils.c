@@ -6,23 +6,23 @@
 /*   By: mgagne <mgagne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 16:50:52 by mgagne            #+#    #+#             */
-/*   Updated: 2023/09/18 17:35:42 by mgagne           ###   ########.fr       */
+/*   Updated: 2023/09/20 10:01:40 by mgagne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	ft_bzero(void *s, size_t n)
+void	ft_fill_tab(t_info *info)
 {
-	unsigned char	*pointer;
+	int	i;
 
-	pointer = s;
-	while (n)
+	i = 0;
+	while (i < info->nb_philo)
 	{
-		*pointer = 0;
-		pointer++;
-		n--;
+		info->int_tab[i] = 0;
+		i++;
 	}
+	return ;
 }
 
 long	get_time(long create_time)

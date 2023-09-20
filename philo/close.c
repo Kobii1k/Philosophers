@@ -6,7 +6,7 @@
 /*   By: mgagne <mgagne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 18:14:31 by mgagne            #+#    #+#             */
-/*   Updated: 2023/09/07 18:16:01 by mgagne           ###   ########.fr       */
+/*   Updated: 2023/09/20 09:57:14 by mgagne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	free_all(t_info *info, pthread_t *philo_threads)
 {
 	free(philo_threads);
 	free(info->fork_m);
+	free(info->int_tab);
 	free(info);
 	return ;
 }

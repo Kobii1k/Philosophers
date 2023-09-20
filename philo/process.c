@@ -6,7 +6,7 @@
 /*   By: mgagne <mgagne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 18:04:45 by mgagne            #+#    #+#             */
-/*   Updated: 2023/09/19 11:54:26 by mgagne           ###   ########.fr       */
+/*   Updated: 2023/09/20 10:26:40 by mgagne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,13 +162,14 @@ void	*philosophize(void *data)
 	while (p->nb_eat != p->info->nb_eat)
 	{
 		if (take_forks(p))
-			return (NULL);
+			break ;
 		if (eat(p))
-			return (NULL);
+			break ;
 		if (ft_sleep(p))
-			return (NULL);
+			break ;
 		if (think(p))
-			return (NULL);
+			break ;
 	}
+	free(data);
 	return (NULL);
 }

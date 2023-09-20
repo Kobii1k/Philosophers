@@ -6,7 +6,7 @@
 /*   By: mgagne <mgagne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 15:19:31 by mgagne            #+#    #+#             */
-/*   Updated: 2023/09/18 17:36:03 by mgagne           ###   ########.fr       */
+/*   Updated: 2023/09/20 10:00:08 by mgagne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ size_t		ft_strlen(const char *s);
 void		print_error(char *str);
 long long	ft_atoll(const char *str);
 long		get_time(long create_time);
-void		ft_bzero(void *s, size_t n);
+void		ft_fill_tab(t_info *info);
 
 //init.c
 t_info		*init_info(int argc, char **argv);
