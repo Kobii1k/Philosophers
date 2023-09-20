@@ -6,7 +6,7 @@
 /*   By: mgagne <mgagne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 18:04:45 by mgagne            #+#    #+#             */
-/*   Updated: 2023/09/20 14:34:37 by mgagne           ###   ########.fr       */
+/*   Updated: 2023/09/20 15:31:15 by mgagne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int	take_forks(t_philo *p)
 
 int	eat(t_philo *p)
 {
+	if (p->info->max_eat == p->info->nb_philo)
+		return (1);
 	if (!check_death(p))
 	{
 		pthread_mutex_lock(&p->info->print_m);
@@ -61,6 +63,8 @@ int	eat(t_philo *p)
 
 int	ft_sleep(t_philo *p)
 {
+	if (p->info->max_eat == p->info->nb_philo)
+		return (1);
 	if (!check_death(p))
 	{
 		pthread_mutex_lock(&p->info->print_m);
@@ -73,6 +77,8 @@ int	ft_sleep(t_philo *p)
 
 int	think(t_philo *p)
 {
+	if (p->info->max_eat == p->info->nb_philo)
+		return (1);
 	if (!check_death(p))
 	{
 		pthread_mutex_lock(&p->info->print_m);
@@ -81,6 +87,29 @@ int	think(t_philo *p)
 		return (0);
 	}
 	return (1);
+}
+
+void	philosophize_limited(t_philo *p)
+{
+	while (p->nb_eat != p->info->nb_eat)
+	{
+		if (take_forks(p))
+			break ;
+		if (eat(p))
+			break ;
+		if (p->nb_eat == p->info->nb_eat)
+		{
+			pthread_mutex_lock(&p->info->jon);
+			p->info->max_eat += 1;
+			pthread_mutex_unlock(&p->info->jon);
+		}
+
+		if (ft_sleep(p))
+			break ;
+		if (think(p))
+			break ;
+	}
+	return ;
 }
 
 void	*philosophize(void *data)
@@ -92,18 +121,22 @@ void	*philosophize(void *data)
 	pthread_mutex_unlock(&p->info->jon);
 	if (p->id % 2 != 0)
 		usleep(40000);
-	// printf("%ld %d\n", get_time(p->info->create_time), p->id);
-	while (p->nb_eat != p->info->nb_eat)
+	if (p->info->nb_eat == -1)
 	{
-		if (take_forks(p))
-			break ;
-		if (eat(p))
-			break ;
-		if (ft_sleep(p))
-			break ;
-		if (think(p))
-			break ;
+		while (p->nb_eat != p->info->nb_eat)
+		{
+			if (take_forks(p))
+				break ;
+			if (eat(p))
+				break ;
+			if (ft_sleep(p))
+				break ;
+			if (think(p))
+				break ;
+		}
 	}
+	else
+		philosophize_limited(p);
 	free(data);
 	return (NULL);
 }

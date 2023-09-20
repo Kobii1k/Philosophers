@@ -6,7 +6,7 @@
 /*   By: mgagne <mgagne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 15:19:31 by mgagne            #+#    #+#             */
-/*   Updated: 2023/09/20 13:59:45 by mgagne           ###   ########.fr       */
+/*   Updated: 2023/09/20 15:24:56 by mgagne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct s_info
 	int				ac;
 	int				alive;
 	int				*int_tab;
+	int				max_eat;
 	pthread_mutex_t	print_m;
 	pthread_mutex_t	dead_m;
 	pthread_mutex_t	jon;
