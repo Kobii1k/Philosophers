@@ -6,7 +6,7 @@
 /*   By: mgagne <mgagne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 10:30:55 by mgagne            #+#    #+#             */
-/*   Updated: 2023/09/20 14:40:32 by mgagne           ###   ########.fr       */
+/*   Updated: 2023/09/20 14:56:41 by mgagne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	take_fork(t_philo *p, int fork_id)
 		if (p->info->int_tab[fork_id] == 0)
 			break ;
 		pthread_mutex_unlock(&p->info->fork_m[fork_id]);
-		usleep(p->info->nb_philo * 10);
+		usleep(p->info->nb_philo * 20);
 	}
 	p->info->int_tab[fork_id] = 1;
 	pthread_mutex_unlock(&p->info->fork_m[fork_id]);
@@ -54,15 +54,19 @@ int	ft_usleep(t_philo *p, long long t_sleep)
 int	check_death(t_philo *p)
 {
 	pthread_mutex_lock(&p->info->dead_m);
-	if (p->info->alive
-		&& (get_time(p->info->create_time) - p->eat_time) > p->info->t_die)
+	if (p->info->alive)
 	{
-		p->info->alive = 0;
-		printf("%ld %d %s\n", get_time(p->info->create_time), p->id, DEAD);
-		pthread_mutex_unlock(&p->info->dead_m);
-		return (1);
+		if ((get_time(p->info->create_time) - p->eat_time) > p->info->t_die)
+		{
+			p->info->alive = 0;
+			pthread_mutex_unlock(&p->info->print_m);
+			printf("%ld %d %s\n", get_time(p->info->create_time), p->id, DEAD);
+			pthread_mutex_unlock(&p->info->print_m);
+			pthread_mutex_unlock(&p->info->dead_m);
+			return (1);
+		}
 	}
-	if (p->info->alive == 0)
+	else
 	{
 		pthread_mutex_unlock(&p->info->dead_m);
 		return (1);
