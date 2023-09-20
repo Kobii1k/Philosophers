@@ -6,7 +6,7 @@
 /*   By: mgagne <mgagne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 15:20:29 by mgagne            #+#    #+#             */
-/*   Updated: 2023/09/19 11:41:23 by mgagne           ###   ########.fr       */
+/*   Updated: 2023/09/20 10:28:15 by mgagne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ pthread_t	*start_process(t_info *info, pthread_t	*philo_threads)
 		pthread_create(&philo_threads[i], NULL, philosophize, philo);
 		i++;
 	}
-	return(philo_threads);
+	return (philo_threads);
 }
 
 int	main(int argc, char **argv)

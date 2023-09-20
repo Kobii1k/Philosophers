@@ -6,7 +6,7 @@
 /*   By: mgagne <mgagne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 15:19:31 by mgagne            #+#    #+#             */
-/*   Updated: 2023/09/20 10:00:08 by mgagne           ###   ########.fr       */
+/*   Updated: 2023/09/20 10:32:24 by mgagne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,24 +63,30 @@ typedef struct s_philo
 }				t_philo;
 
 //utils.c
-size_t		ft_strlen(const char *s);
-void		print_error(char *str);
-long long	ft_atoll(const char *str);
-long		get_time(long create_time);
-void		ft_fill_tab(t_info *info);
+size_t			ft_strlen(const char *s);
+void			print_error(char *str);
+long long		ft_atoll(const char *str);
+long			get_time(long create_time);
+void			ft_fill_tab(t_info *info);
 
 //init.c
-t_info		*init_info(int argc, char **argv);
-int			check_input(int argc, char **argv);
-pthread_mutex_t	*init_forks(int	n);
-pthread_t	*init_philo(t_info *info);
+t_info			*init_info(int argc, char **argv);
+int				check_input(int argc, char **argv);
+pthread_mutex_t	*init_forks(int n);
+pthread_t		*init_philo(t_info *info);
 
 //process.c
-void		*philosophize(void *data);
+void			*philosophize(void *data);
+
+//process_utils.c
+void			replace_fork(t_philo *p, int fork_id);
+int				take_fork(t_philo *p, int fork_id);
+int				ft_usleep(t_philo *p, long long t_sleep);
+int				check_death(t_philo *p);
 
 //close.c
-void		destroy_mutexes(t_info *info);
-void		wait_threads(t_info *info, pthread_t *philo_threads);
-void		free_all(t_info *info, pthread_t *philo_threads);
+void			destroy_mutexes(t_info *info);
+void			wait_threads(t_info *info, pthread_t *philo_threads);
+void			free_all(t_info *info, pthread_t *philo_threads);
 
 #endif
