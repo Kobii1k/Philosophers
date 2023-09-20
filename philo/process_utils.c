@@ -6,7 +6,7 @@
 /*   By: mgagne <mgagne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 10:30:55 by mgagne            #+#    #+#             */
-/*   Updated: 2023/09/20 10:34:21 by mgagne           ###   ########.fr       */
+/*   Updated: 2023/09/20 14:40:32 by mgagne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,13 @@ int	take_fork(t_philo *p, int fork_id)
 {
 	while (1)
 	{
-		pthread_mutex_lock(&p->info->print_m);
 		if (check_death(p))
-			return (pthread_mutex_unlock(&p->info->print_m), 1);
-		pthread_mutex_unlock(&p->info->print_m);
+			return (1);
 		pthread_mutex_lock(&p->info->fork_m[fork_id]);
 		if (p->info->int_tab[fork_id] == 0)
 			break ;
 		pthread_mutex_unlock(&p->info->fork_m[fork_id]);
-		ft_usleep(p, p->info->nb_philo);
+		usleep(p->info->nb_philo * 10);
 	}
 	p->info->int_tab[fork_id] = 1;
 	pthread_mutex_unlock(&p->info->fork_m[fork_id]);
@@ -46,11 +44,9 @@ int	ft_usleep(t_philo *p, long long t_sleep)
 	t = get_time(p->info->create_time);
 	while ((get_time(p->info->create_time) - t) < t_sleep)
 	{
-		usleep(p->info->nb_philo);
-		pthread_mutex_lock(&p->info->print_m);
+		usleep(t_sleep);
 		if (check_death(p))
-			return (pthread_mutex_unlock(&p->info->print_m), 1);
-		pthread_mutex_unlock(&p->info->print_m);
+			return (1);
 	}
 	return (0);
 }

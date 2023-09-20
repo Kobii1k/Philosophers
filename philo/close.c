@@ -6,7 +6,7 @@
 /*   By: mgagne <mgagne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 18:14:31 by mgagne            #+#    #+#             */
-/*   Updated: 2023/09/20 09:57:14 by mgagne           ###   ########.fr       */
+/*   Updated: 2023/09/20 13:59:59 by mgagne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	destroy_mutexes(t_info *info)
 	int	i;
 
 	pthread_mutex_destroy(&info->dead_m);
+	pthread_mutex_destroy(&info->jon);
 	pthread_mutex_destroy(&info->print_m);
 	i = -1;
 	while (++i < info->nb_philo)

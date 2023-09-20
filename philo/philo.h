@@ -6,7 +6,7 @@
 /*   By: mgagne <mgagne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 15:19:31 by mgagne            #+#    #+#             */
-/*   Updated: 2023/09/20 10:32:24 by mgagne           ###   ########.fr       */
+/*   Updated: 2023/09/20 13:59:45 by mgagne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct s_info
 	int				*int_tab;
 	pthread_mutex_t	print_m;
 	pthread_mutex_t	dead_m;
+	pthread_mutex_t	jon;
 	pthread_mutex_t	*fork_m;
 }				t_info;
 

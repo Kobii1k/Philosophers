@@ -6,7 +6,7 @@
 /*   By: mgagne <mgagne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 12:54:20 by mgagne            #+#    #+#             */
-/*   Updated: 2023/09/20 10:28:54 by mgagne           ###   ########.fr       */
+/*   Updated: 2023/09/20 14:33:30 by mgagne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ static int	check_overflow(t_info *p, int argc)
 t_info	*init_info(int argc, char **argv)
 {
 	t_info			*info;
-	struct timeval	time;
 
 	info = malloc(sizeof(t_info));
 	if (!info)
@@ -67,10 +66,9 @@ t_info	*init_info(int argc, char **argv)
 		return (free(info), NULL);
 	info->int_tab = malloc(sizeof(int) * info->nb_philo);
 	ft_fill_tab(info);
-	gettimeofday(&time, NULL);
-	info->create_time = (long)(time.tv_usec / 1000 + time.tv_sec * 1000);
 	pthread_mutex_init(&(info->print_m), NULL);
 	pthread_mutex_init(&(info->dead_m), NULL);
+	pthread_mutex_init(&(info->jon), NULL);
 	return (info);
 }
 
