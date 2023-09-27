@@ -6,7 +6,7 @@
 /*   By: mgagne <mgagne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 15:19:31 by mgagne            #+#    #+#             */
-/*   Updated: 2023/09/20 15:24:56 by mgagne           ###   ########.fr       */
+/*   Updated: 2023/09/27 12:03:48 by mgagne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct s_info
 	int				max_eat;
 	pthread_mutex_t	print_m;
 	pthread_mutex_t	dead_m;
-	pthread_mutex_t	jon;
+	pthread_mutex_t	start_end;
 	pthread_mutex_t	*fork_m;
 }				t_info;
 
@@ -79,12 +79,17 @@ pthread_t		*init_philo(t_info *info);
 
 //process.c
 void			*philosophize(void *data);
+int				think(t_philo *p);
+int				ft_sleep(t_philo *p);
+int				eat(t_philo *p);
+int				take_forks(t_philo *p);
 
 //process_utils.c
 void			replace_fork(t_philo *p, int fork_id);
 int				take_fork(t_philo *p, int fork_id);
 int				ft_usleep(t_philo *p, long long t_sleep);
 int				check_death(t_philo *p);
+void			philosophize_limited(t_philo *p);
 
 //close.c
 void			destroy_mutexes(t_info *info);

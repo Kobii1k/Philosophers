@@ -6,7 +6,7 @@
 /*   By: mgagne <mgagne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 12:54:20 by mgagne            #+#    #+#             */
-/*   Updated: 2023/09/20 14:33:30 by mgagne           ###   ########.fr       */
+/*   Updated: 2023/09/27 11:59:41 by mgagne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,17 +58,20 @@ t_info	*init_info(int argc, char **argv)
 	info->t_die = ft_atoll(argv[2]);
 	info->t_eat = ft_atoll(argv[3]);
 	info->t_sleep = ft_atoll(argv[4]);
+	info->alive = 1;
+	info->max_eat = 0;
+	info->nb_eat = -1;
 	if (argc == 6)
 		info->nb_eat = ft_atoll(argv[5]);
-	else
-		info->nb_eat = -1;
 	if (check_overflow(info, argc))
 		return (free(info), NULL);
 	info->int_tab = malloc(sizeof(int) * info->nb_philo);
+	if (!info->int_tab)
+		return (print_error(ERROR99), free(info), NULL);
 	ft_fill_tab(info);
 	pthread_mutex_init(&(info->print_m), NULL);
 	pthread_mutex_init(&(info->dead_m), NULL);
-	pthread_mutex_init(&(info->jon), NULL);
+	pthread_mutex_init(&(info->start_end), NULL);
 	return (info);
 }
 
@@ -79,7 +82,6 @@ pthread_t	*init_philo(t_info *info)
 	philo_threads = malloc(sizeof(pthread_t) * info->nb_philo);
 	if (!philo_threads)
 		return (free(info), NULL);
-	info->alive = 1;
 	info->fork_m = init_forks(info->nb_philo);
 	if (!info->fork_m)
 		return (free(info), free(philo_threads), NULL);

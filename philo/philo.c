@@ -6,7 +6,7 @@
 /*   By: mgagne <mgagne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 15:20:29 by mgagne            #+#    #+#             */
-/*   Updated: 2023/09/20 14:33:42 by mgagne           ###   ########.fr       */
+/*   Updated: 2023/09/27 11:46:04 by mgagne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ pthread_t	*start_process(t_info *info, pthread_t	*philo_threads)
 	struct timeval	time;
 
 	i = 0;
-	pthread_mutex_lock(&info->jon);
+	pthread_mutex_lock(&info->start_end);
+	info->create_time = 0;
 	while (i < info->nb_philo)
 	{
 		philo = new_philo(info, i + 1);
@@ -49,7 +50,7 @@ pthread_t	*start_process(t_info *info, pthread_t	*philo_threads)
 	}
 	gettimeofday(&time, NULL);
 	info->create_time = (long)(time.tv_usec / 1000 + time.tv_sec * 1000);
-	pthread_mutex_unlock(&info->jon);
+	pthread_mutex_unlock(&info->start_end);
 	return (philo_threads);
 }
 
