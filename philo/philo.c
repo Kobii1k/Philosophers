@@ -6,7 +6,7 @@
 /*   By: mgagne <mgagne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 15:20:29 by mgagne            #+#    #+#             */
-/*   Updated: 2023/09/27 11:46:04 by mgagne           ###   ########.fr       */
+/*   Updated: 2023/09/27 13:53:43 by mgagne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ pthread_t	*start_process(t_info *info, pthread_t	*philo_threads)
 	{
 		philo = new_philo(info, i + 1);
 		if (!philo)
-			return (free(info->fork_m), free(info), free(philo_threads), NULL);
+			return (free(info->fork_m), free(info->int_tab), free(info),
+				free(philo_threads), NULL);
 		pthread_create(&philo_threads[i], NULL, philosophize, philo);
 		i++;
 	}

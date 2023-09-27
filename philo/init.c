@@ -6,7 +6,7 @@
 /*   By: mgagne <mgagne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 12:54:20 by mgagne            #+#    #+#             */
-/*   Updated: 2023/09/27 11:59:41 by mgagne           ###   ########.fr       */
+/*   Updated: 2023/09/27 13:52:46 by mgagne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,10 @@ pthread_t	*init_philo(t_info *info)
 
 	philo_threads = malloc(sizeof(pthread_t) * info->nb_philo);
 	if (!philo_threads)
-		return (free(info), NULL);
+		return (free(info->int_tab), free(info), NULL);
 	info->fork_m = init_forks(info->nb_philo);
 	if (!info->fork_m)
-		return (free(info), free(philo_threads), NULL);
+		return (free(info->int_tab), free(info), free(philo_threads), NULL);
 	return (philo_threads);
 }
 
