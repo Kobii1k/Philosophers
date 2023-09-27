@@ -6,7 +6,7 @@
 /*   By: mgagne <mgagne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 12:54:20 by mgagne            #+#    #+#             */
-/*   Updated: 2023/09/27 13:52:46 by mgagne           ###   ########.fr       */
+/*   Updated: 2023/09/27 14:07:34 by mgagne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@ static int	check_overflow(t_info *p, int argc)
 	p->t_eat <= 0 || p->t_sleep <= 0 || \
 	(argc == 6 && (p->nb_eat <= 0 || p->nb_eat > INT_MAX)))
 		return (print_error(ERROR4), 1);
-	if (p->t_die < 60 || p->t_eat < 60 || p->t_sleep < 60)
-		return (print_error(ERROR5), 1);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: mgagne <mgagne@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 15:19:31 by mgagne            #+#    #+#             */
-/*   Updated: 2023/09/27 12:03:48 by mgagne           ###   ########.fr       */
+/*   Updated: 2023/09/27 14:05:09 by mgagne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,8 @@
 # define ERROR1 "./philo [nb_of_philo] [time_die] [time_eat] [time_sleep] \
 [nb_of_times_philo_must_eat]\n"
 # define ERROR2 "parse error: empty parameter.\n"
-# define ERROR3 "parse error: parameters must be positive digits.\n"
+# define ERROR3 "parse error: parameters must be positive numbers.\n"
 # define ERROR4 "parse error: parameters must be between 1 and INT_MAX.\n"
-# define ERROR5 "parse error: time variables must be >= 60ms.\n"
 # define ERROR99 "malloc error\n"
 
 // # define EAT	"\x1b[32mis eating\x1b[0m"
